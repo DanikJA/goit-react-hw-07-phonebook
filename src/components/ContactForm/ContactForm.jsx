@@ -42,7 +42,7 @@ export const ContactForm = () => {
     } else if (contactWithSameNumber) {
       Notiflix.Notify.failure(`Контакт з номером ${number} вже існує!`);
     } else {
-      dispatch(addContact(name, number));
+      dispatch(addContact({ name, number }));
       Notiflix.Notify.success(`Контакт ${name} успішно додано!`);
     }
   };

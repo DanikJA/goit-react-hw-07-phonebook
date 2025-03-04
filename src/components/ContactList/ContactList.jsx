@@ -4,14 +4,33 @@ import {
   ContactListHeading,
   ContactList,
 } from './ContactListStyled.jsx';
+import { ClipLoader } from 'react-spinners';
 import { useSelector } from 'react-redux';
-import { selectFilter, selectContacts } from '../../redux/selectors.js';
+import {
+  selectFilter,
+  selectContacts,
+  isLoading,
+} from '../../redux/selectors.js';
 
 export const ContactListComponent = () => {
   const contacts = useSelector(selectContacts);
-
   const filter = useSelector(selectFilter);
+  const isLoadingContacts = useSelector(isLoading);
 
+  if (!isLoadingContacts) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: '70px',
+        }}
+      >
+        <ClipLoader color="rgb(100, 199, 122)" size={50}></ClipLoader>
+      </div>
+    );
+  }
   const filteredContacts = contacts.filter(
     contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase()) ||

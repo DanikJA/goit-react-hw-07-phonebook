@@ -20,6 +20,7 @@
     "react-dom": "^18.1.0",
     "react-redux": "^9.2.0",
     "react-scripts": "^5.0.1",
+    "react-spinners": "^0.15.0",
     "redax": "^0.0.0",
     "redux-persist": "^6.0.0",
     "resolve-url-loader": "^5.0.0",
