@@ -4,7 +4,7 @@ import { setFilter } from '../../redux/contactSlice.js';
 import { selectFilter } from '../../redux/selectors.js';
 
 export const Filter = () => {
-  const filter = useSelector(selectFilter);
+  const filterValue = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const filterContacts = event => {
@@ -13,7 +13,7 @@ export const Filter = () => {
   return (
     <SearchLabel>
       Find contacts by name
-      <SearchInput type="text" value={filter} onChange={filterContacts} />
+      <SearchInput type="text" value={filterValue} onChange={filterContacts} />
     </SearchLabel>
   );
 };
