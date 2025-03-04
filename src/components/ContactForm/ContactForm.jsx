@@ -1,7 +1,7 @@
 import { Formik, Field, ErrorMessage } from 'formik';
 import Notiflix from 'notiflix';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactSlice.js';
+import { addContact } from '../../redux/asyncFunctions';
 import {
   StyledForm,
   Label,
