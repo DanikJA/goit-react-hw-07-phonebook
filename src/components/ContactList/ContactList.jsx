@@ -1,23 +1,34 @@
+import { useEffect } from 'react';
 import { ContactItem } from '../ContactItem/ContactItem';
-import {
-  ContactListContainer,
-  ContactListHeading,
-  ContactList,
-} from './ContactListStyled.jsx';
 import { ClipLoader } from 'react-spinners';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchContacts } from '../../redux/asyncFunctions.js';
 import {
   selectFilter,
   selectContacts,
   isLoading,
 } from '../../redux/selectors.js';
+import {
+  ContactListContainer,
+  ContactListHeading,
+  ContactList,
+} from './ContactListStyled.jsx';
 
 export const ContactListComponent = () => {
+  const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const filterValue = useSelector(selectFilter);
   const isLoadingContacts = useSelector(isLoading);
 
-  if (!isLoadingContacts) {
+  useEffect(() => {
+    if (contacts.length === 0) {
+      dispatch(fetchContacts());
+    }
+  }, [dispatch, contacts.length]);
+
+  console.log(contacts);
+
+  if (isLoadingContacts) {
     return (
       <div
         style={{

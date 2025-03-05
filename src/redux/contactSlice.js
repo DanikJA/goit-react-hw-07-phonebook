@@ -20,6 +20,7 @@ const contactsSlice = createSlice({
     builder
       .addCase(fetchContacts.pending, state => {
         state.contacts.isLoading = true;
+        state.contacts.error = null;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.contacts.items = action.payload;
@@ -51,6 +52,7 @@ const contactsSlice = createSlice({
         state.contacts.items = state.contacts.items.filter(
           contact => contact.id !== action.payload
         );
+        state.contacts.isLoading = false;
       })
       .addCase(deleteContact.rejected, state => {
         state.contacts.isLoading = false;
