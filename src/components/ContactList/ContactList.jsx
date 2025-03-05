@@ -14,7 +14,7 @@ import {
 
 export const ContactListComponent = () => {
   const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
+  const filterValue = useSelector(selectFilter);
   const isLoadingContacts = useSelector(isLoading);
 
   if (!isLoadingContacts) {
@@ -33,8 +33,8 @@ export const ContactListComponent = () => {
   }
   const filteredContacts = contacts.filter(
     contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()) ||
-      contact.number.includes(filter)
+      contact.name.toLowerCase().includes(filterValue.toLowerCase()) ||
+      contact.number.includes(filterValue)
   );
 
   return (
